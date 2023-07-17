@@ -50,7 +50,10 @@
     value >= 0  ? '#ffffbf':
                   '#b2182b';
             }
-			
+			var minValue = 1;
+      var minRadius = 6;
+    function calcRadius(val) {return 1.0083 * Math.pow(val/minValue,.5716)*minRadius;
+  };  
       var background = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}{r}.{ext}', {
 	attribution: '',
 	subdomains: 'abcd',
@@ -95,10 +98,10 @@
           pointToLayer: function (data, latlng) {
             var diff = (data.properties.DIFF);
             return L.circleMarker(latlng, {
-              radius: data.properties.EV,
+              radius: calcRadius(data.properties.EV_EV),
               color: getColorFor(data.properties.DIFF),
               fillColor: getColorFor(data.properties.DIFF),
-            }).bindPopup('<p>' + 'Electoral votes:' + data.properties.EV + '</p>');
+            }).bindPopup('<p>' + 'Electoral votes:' + data.properties.EV_EV + '</p>');
           },
         });
         timelineControl.addTo(map);
@@ -112,6 +115,6 @@
 	  
 
     </script>
-    <script src=""></script>
+    <script src="https://dwheaton2011.github.io/Assignment5/centroidsUSE.jsonp"></script>
   </body>
 </html>

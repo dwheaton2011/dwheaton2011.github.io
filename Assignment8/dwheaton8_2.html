@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
-    <title>Lab 8 part 2| D3</title>
+    <title>Lab 8 part 2 | D3</title>
     <style>
 body {
     position: absolute;
@@ -11,7 +11,7 @@ body {
     line-height: 1.25;
     transition: font-size 0.1s ease-out;
 }
-h1, h2 {
+h1, h2, h3 {
     position: absolute;
     background: white;
     left: 10px;
@@ -38,8 +38,8 @@ top: 30px;
 var width = 1000;
   var height = 600;
   
-var lowColor = '#bc2a66'
-var highColor = '#f9f9f9'
+var lowColor = '#1d7cbe'
+var highColor = '#f3c300'
 var minVal = 41642001
 var maxVal = 754000000000
 var ramp = d3.scaleLinear().domain([minVal,maxVal]).range([lowColor,highColor]);
@@ -52,7 +52,7 @@ var ramp = d3.scaleLinear().domain([minVal,maxVal]).range([lowColor,highColor]);
   
 var g = svg.append( "g" );
 var albersProjection = d3.geoAlbers()
-    .scale( 2850000 )
+    .scale( 285000 )
     .rotate( [96.008314,0] )
     .center( [0, 41.2747571] )
     .translate( [width/2,height/2] );
@@ -64,7 +64,7 @@ var geoPath = d3.geoPath()
     .data( omaroads.features )
 	.enter()
     .append( "path" )
-    .attr( "fill", "#ccc" ) 
+    .attr( "fill", "#66000000" ) 
 	.attr( "stroke", "#333")
 	.attr( "d", geoPath );
 	
@@ -76,17 +76,19 @@ var lnk_json = svg.append( "g" );
     .append( "path" )
     .attr( "fill", function(d) { return ramp(d.properties.Parcel_Id) })
     .attr( "stroke", "#999" )
+    .attr("opacity", "0.85")
 	.attr( "d", geoPath )
-    .attr("class","buildingdata")
+    .attr("class","Owner")
 
 .on("mouseover", function(d){
 //populate h2 with "built in" & the year built field from the json
-d3.select("h2").text("Built in " + d.properties.Parcel_Id); d3.select(this).attr("class","buildingdata hover"); })
+d3.select("h2").text("Operating LLC Name: " + d.properties.Owner + " | Address: " +d.properties.Property_A); d3.select(this).attr("class","Owner hover"); })
 //here, D3 to replace text interactively based on building data
        .on("mouseout", function(d){
               d3.select("h2").text("");
-              d3.select(this).attr("class","buildingdata");
+              d3.select(this).attr("class","Owner");
        });
         </script>
+    <p>Source: Douglas County Assessor; U.S. Census TIGER | DANIEL WHEATON | MIDWEST NEWSROOM</p>
    </body>
 </html>

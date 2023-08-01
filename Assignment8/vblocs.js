@@ -1,7 +1,6 @@
-var vblocs = [
-    {
+var vblocs = {
 "type": "FeatureCollection",
-"name": "oma-vb-points",
+"name": "vblocs",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "Parcel_Id": 416420001.99999994, "Owner": "VB ONE LLC", "Property_A": "4527 S 21 ST", "Property_C": "OMAHA", "Latitude": 41.21376, "Longitude": -95.94275 }, "geometry": { "type": "Point", "coordinates": [ -95.94275, 41.21376 ] } },
@@ -308,5 +307,4 @@ var vblocs = [
 { "type": "Feature", "properties": { "Parcel_Id": 754000000000.0, "Owner": "V B SIX LLC", "Property_A": "318 W OAK ST", "Property_C": "COUNCIL BLUFFS", "Latitude": 41.27082, "Longitude": -95.84156 }, "geometry": { "type": "Point", "coordinates": [ -95.84156, 41.27082 ] } },
 { "type": "Feature", "properties": { "Parcel_Id": 754000000000.0, "Owner": "V B SIX LLC", "Property_A": "3600 3RD AVE", "Property_C": "COUNCIL BLUFFS", "Latitude": 41.25914, "Longitude": -95.90486 }, "geometry": { "type": "Point", "coordinates": [ -95.90486, 41.25914 ] } }
 ]
-}]
-;
+};
